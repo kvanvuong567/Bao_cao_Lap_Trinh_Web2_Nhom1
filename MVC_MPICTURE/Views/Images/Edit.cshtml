@@ -1,0 +1,81 @@
+﻿@model MVC_MPICTURE.Models.DTO.EditImageDTO
+
+@{
+    ViewBag.Title = "Chỉnh sửa hình ảnh";
+}
+
+<style>
+    body {
+        background-image: url('https://th.bing.com/th/id/R.444ee05f7214d0733408ed264aa162c0?rik=y5VdqX%2boTOhlbg&riu=http%3a%2f%2fwww.pixelstalk.net%2fwp-content%2fuploads%2f2016%2f04%2flandscape-wallpaper-hd-backgrounds.jpg&ehk=NstFyx3yEGqPuC1FsArlbLzq%2bbCyPnobk4HDI9yiGR4%3d&risl=&pid=ImgRaw&r=0');
+        background-size: cover;
+        color:white;
+    }
+
+    h2 {
+        color: #fff;
+    }
+
+    .alert {
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+</style>
+
+<h2>Chỉnh sửa hình ảnh</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.Error
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Title)
+        @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description)
+        @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Url)
+        @Html.TextBoxFor(model => model.Url, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DateAdded)
+        @Html.TextBoxFor(model => model.DateAdded, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.DateAdded, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CategoryId)
+        @Html.DropDownListFor(model => model.CategoryId, (SelectList)ViewBag.Categories, "Chọn danh mục", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TagIds)
+        @Html.ListBoxFor(model => model.TagIds, (MultiSelectList)ViewBag.Tags, new { @class = "form-control", multiple = "multiple" })
+        @Html.ValidationMessageFor(model => model.TagIds, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Lưu</button>
+}

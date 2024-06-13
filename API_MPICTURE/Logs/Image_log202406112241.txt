@@ -1,0 +1,87 @@
+2024-06-11 22:41:27.108 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5102/api/Images/get-all-images?filterOn=&filterQuery=&sortBy=&isAscending=True - null null
+2024-06-11 22:41:27.124 +07:00 [INF] Executing endpoint 'API_MPICTURE.Controllers.ImagesController.GetAllImages (API_MPICTURE)'
+2024-06-11 22:41:27.127 +07:00 [INF] Route matched with {action = "GetAllImages", controller = "Images"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllImages(System.String, System.String, System.String, Boolean, Int32, Int32) on controller API_MPICTURE.Controllers.ImagesController (API_MPICTURE).
+2024-06-11 22:41:27.130 +07:00 [INF] GetAll Image Action method was invoked
+2024-06-11 22:41:27.132 +07:00 [WRN] This is a warning log
+2024-06-11 22:41:27.133 +07:00 [ERR] This is a error log
+2024-06-11 22:41:27.154 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[Description], [t].[URL], [t].[DateAdded], [t].[CategoryId], [c].[Name], [c].[Id], [t0].[Id], [t0].[Name], [t0].[Id0], [t0].[Id1]
+FROM (
+    SELECT [i].[Id], [i].[CategoryId], [i].[DateAdded], [i].[Description], [i].[Title], [i].[URL]
+    FROM [Images] AS [i]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[Id]
+LEFT JOIN (
+    SELECT [i0].[TagId] AS [Id], [t1].[Name], [i0].[Id] AS [Id0], [t1].[Id] AS [Id1], [i0].[ImageId]
+    FROM [Image_Tags] AS [i0]
+    INNER JOIN [Tags] AS [t1] ON [i0].[TagId] = [t1].[Id]
+) AS [t0] ON [t].[Id] = [t0].[ImageId]
+ORDER BY [t].[Id], [c].[Id], [t0].[Id0]
+2024-06-11 22:41:27.162 +07:00 [INF] Finished GetAllImage request with data[{"Id":9,"Title":"Ho\u00E0ng h\u00F4n tr\u00EAn bi\u1EC3n","Description":"M\u1ED9t c\u1EA3nh ho\u00E0ng h\u00F4n \u0111\u1EB9p m\u1EAFt tr\u00EAn bi\u1EC3n.","Url":"https://images.unsplash.com/photo-1501973801540-537f08ccae7b","DateAdded":"2024-05-28T10:39:59","CategoryId":4,"CategoryName":"Phong c\u1EA3nh","Tags":[{"Id":2,"Name":"Thi\u00EAn Nhi\u00EAn"}]},{"Id":12,"Title":"S\u01B0 t\u1EED trong r\u1EEBng","Description":"H\u00ECnh \u1EA3nh c\u1EE7a m\u1ED9t con s\u01B0 t\u1EED trong m\u00F4i tr\u01B0\u1EDDng t\u1EF1 nhi\u00EAn.","Url":"https://i.pinimg.com/564x/b9/0a/e1/b90ae173190f3565a2d5edf7d6ae8b00.jpg","DateAdded":"2024-05-28T10:32:37.74","CategoryId":5,"CategoryName":"\u0110\u1ED9ng v\u1EADt hoang d\u00E3","Tags":[{"Id":2,"Name":"Thi\u00EAn Nhi\u00EAn"},{"Id":3,"Name":"\u0110\u1ED9ng v\u1EADt"}]},{"Id":13,"Title":"T\u00F2a nh\u00E0 ch\u1ECDc tr\u1EDDi","Description":"C\u1EA3nh quan th\u00E0nh ph\u1ED1 v\u1EDBi c\u00E1c t\u00F2a nh\u00E0 cao t\u1EA7ng.","Url":"https://i.pinimg.com/564x/7a/30/1b/7a301bb1e01e82d371b77c02323f89c7.jpg","DateAdded":"2024-05-28T10:32:37.74","CategoryId":6,"CategoryName":"Ki\u1EBFn tr\u00FAc","Tags":[{"Id":4,"Name":"Th\u00E0nh ph\u1ED1"}]},{"Id":14,"Title":"R\u1EEBng m\u00F9a thu","Description":"C\u1EA3nh r\u1EEBng v\u00E0o m\u00F9a thu v\u1EDBi l\u00E1 v\u00E0ng r\u1EF1c r\u1EE1.","Url":"https://i.pinimg.com/564x/73/bc/91/73bc919c9042a853ea77278734e0c3b5.jpg","DateAdded":"2024-05-28T10:32:37.74","CategoryId":4,"CategoryName":"Phong c\u1EA3nh","Tags":[{"Id":2,"Name":"Thi\u00EAn Nhi\u00EAn"}]},{"Id":1013,"Title":"K V\u0103n V\u01B0\u01A1ng","Description":"Chi\u1EBFn th\u1EA7n Boon h\u00E0ng - K\u1EBB h\u1EE7y di\u1EC7p shipper","Url":"https://th.bing.com/th/id/R.957ecf8189298622d1b2b33e8314461c?rik=QL6W0jHNYcfjIw\u0026pid=ImgRaw\u0026r=0","DateAdded":"2024-06-11T00:00:00","CategoryId":7,"CategoryName":"Ch\u00E2n dung","Tags":[{"Id":5,"Name":"Ch\u00E2n dung"}]}]
+2024-06-11 22:41:27.169 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API_MPICTURE.Models.DTO.ImageWithCategoryAndTagsDTO, API_MPICTURE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-06-11 22:41:27.171 +07:00 [INF] Executed action API_MPICTURE.Controllers.ImagesController.GetAllImages (API_MPICTURE) in 41.2669ms
+2024-06-11 22:41:27.173 +07:00 [INF] Executed endpoint 'API_MPICTURE.Controllers.ImagesController.GetAllImages (API_MPICTURE)'
+2024-06-11 22:41:27.176 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5102/api/Images/get-all-images?filterOn=&filterQuery=&sortBy=&isAscending=True - 200 null application/json; charset=utf-8 68.1386ms
+2024-06-11 22:41:29.420 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5102/api/Tags/get-all-tags - null null
+2024-06-11 22:41:29.429 +07:00 [INF] Executing endpoint 'API_MPICTURE.Controllers.TagsController.GetAllTags (API_MPICTURE)'
+2024-06-11 22:41:29.431 +07:00 [INF] Route matched with {action = "GetAllTags", controller = "Tags"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllTags(System.String, System.String, System.String, Boolean, Int32, Int32) on controller API_MPICTURE.Controllers.TagsController (API_MPICTURE).
+2024-06-11 22:41:29.438 +07:00 [INF] GetAllTags Action method was invoked
+2024-06-11 22:41:29.450 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Name]
+FROM [Tags] AS [t]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-06-11 22:41:29.457 +07:00 [INF] Finished GetAllTags request with data [{"Id":2,"Name":"Thi\u00EAn Nhi\u00EAn"},{"Id":3,"Name":"\u0110\u1ED9ng v\u1EADt"},{"Id":4,"Name":"Th\u00E0nh ph\u1ED1"},{"Id":5,"Name":"Ch\u00E2n dung"},{"Id":6,"Name":"Ngh\u1EC7 thu\u1EADt"}]
+2024-06-11 22:41:29.465 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API_MPICTURE.Models.DTO.TagDTO, API_MPICTURE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-06-11 22:41:29.466 +07:00 [INF] Executed action API_MPICTURE.Controllers.TagsController.GetAllTags (API_MPICTURE) in 28.2736ms
+2024-06-11 22:41:29.468 +07:00 [INF] Executed endpoint 'API_MPICTURE.Controllers.TagsController.GetAllTags (API_MPICTURE)'
+2024-06-11 22:41:29.470 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5102/api/Tags/get-all-tags - 200 null application/json; charset=utf-8 49.9607ms
+2024-06-11 22:41:32.909 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5102/api/Tags/get-tag-by-id/2 - null null
+2024-06-11 22:41:32.917 +07:00 [INF] Executing endpoint 'API_MPICTURE.Controllers.TagsController.GetTagById (API_MPICTURE)'
+2024-06-11 22:41:32.920 +07:00 [INF] Route matched with {action = "GetTagById", controller = "Tags"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetTagById(Int32) on controller API_MPICTURE.Controllers.TagsController (API_MPICTURE).
+2024-06-11 22:41:32.937 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[Name]
+FROM [Tags] AS [t]
+WHERE [t].[Id] = @__id_0
+2024-06-11 22:41:32.945 +07:00 [INF] Executing OkObjectResult, writing value of type 'API_MPICTURE.Models.DTO.TagDTO'.
+2024-06-11 22:41:32.949 +07:00 [INF] Executed action API_MPICTURE.Controllers.TagsController.GetTagById (API_MPICTURE) in 21.9521ms
+2024-06-11 22:41:32.951 +07:00 [INF] Executed endpoint 'API_MPICTURE.Controllers.TagsController.GetTagById (API_MPICTURE)'
+2024-06-11 22:41:32.952 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5102/api/Tags/get-tag-by-id/2 - 200 null application/json; charset=utf-8 43.5152ms
+2024-06-11 22:41:40.551 +07:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5102/api/Tags/update-tag-by-id/2 - application/json; charset=utf-8 null
+2024-06-11 22:41:40.558 +07:00 [INF] Executing endpoint 'API_MPICTURE.Controllers.TagsController.UpdateTag (API_MPICTURE)'
+2024-06-11 22:41:40.565 +07:00 [INF] Route matched with {action = "UpdateTag", controller = "Tags"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult UpdateTag(Int32, API_MPICTURE.Models.DTO.TagDTO) on controller API_MPICTURE.Controllers.TagsController (API_MPICTURE).
+2024-06-11 22:41:40.589 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[Name]
+FROM [Tags] AS [t]
+WHERE [t].[Id] = @__p_0
+2024-06-11 22:41:40.608 +07:00 [INF] Executing OkObjectResult, writing value of type 'API_MPICTURE.Models.DTO.TagDTO'.
+2024-06-11 22:41:40.613 +07:00 [INF] Executed action API_MPICTURE.Controllers.TagsController.UpdateTag (API_MPICTURE) in 42.6786ms
+2024-06-11 22:41:40.616 +07:00 [INF] Executed endpoint 'API_MPICTURE.Controllers.TagsController.UpdateTag (API_MPICTURE)'
+2024-06-11 22:41:40.619 +07:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5102/api/Tags/update-tag-by-id/2 - 200 null application/json; charset=utf-8 68.7419ms
+2024-06-11 22:41:40.630 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5102/api/Tags/get-all-tags - null null
+2024-06-11 22:41:40.636 +07:00 [INF] Executing endpoint 'API_MPICTURE.Controllers.TagsController.GetAllTags (API_MPICTURE)'
+2024-06-11 22:41:40.638 +07:00 [INF] Route matched with {action = "GetAllTags", controller = "Tags"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllTags(System.String, System.String, System.String, Boolean, Int32, Int32) on controller API_MPICTURE.Controllers.TagsController (API_MPICTURE).
+2024-06-11 22:41:40.641 +07:00 [INF] GetAllTags Action method was invoked
+2024-06-11 22:41:40.650 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Name]
+FROM [Tags] AS [t]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-06-11 22:41:40.655 +07:00 [INF] Finished GetAllTags request with data [{"Id":2,"Name":"Thi\u00EAn Nhi\u00EAn"},{"Id":3,"Name":"\u0110\u1ED9ng v\u1EADt"},{"Id":4,"Name":"Th\u00E0nh ph\u1ED1"},{"Id":5,"Name":"Ch\u00E2n dung"},{"Id":6,"Name":"Ngh\u1EC7 thu\u1EADt"}]
+2024-06-11 22:41:40.658 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API_MPICTURE.Models.DTO.TagDTO, API_MPICTURE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-06-11 22:41:40.661 +07:00 [INF] Executed action API_MPICTURE.Controllers.TagsController.GetAllTags (API_MPICTURE) in 20.5225ms
+2024-06-11 22:41:40.664 +07:00 [INF] Executed endpoint 'API_MPICTURE.Controllers.TagsController.GetAllTags (API_MPICTURE)'
+2024-06-11 22:41:40.666 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5102/api/Tags/get-all-tags - 200 null application/json; charset=utf-8 35.758ms
+2024-06-11 22:41:50.446 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5102/api/Tags/get-tag-by-id/2 - null null
+2024-06-11 22:41:50.452 +07:00 [INF] Executing endpoint 'API_MPICTURE.Controllers.TagsController.GetTagById (API_MPICTURE)'
+2024-06-11 22:41:50.455 +07:00 [INF] Route matched with {action = "GetTagById", controller = "Tags"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetTagById(Int32) on controller API_MPICTURE.Controllers.TagsController (API_MPICTURE).
+2024-06-11 22:41:50.467 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[Name]
+FROM [Tags] AS [t]
+WHERE [t].[Id] = @__id_0
+2024-06-11 22:41:50.474 +07:00 [INF] Executing OkObjectResult, writing value of type 'API_MPICTURE.Models.DTO.TagDTO'.
+2024-06-11 22:41:50.476 +07:00 [INF] Executed action API_MPICTURE.Controllers.TagsController.GetTagById (API_MPICTURE) in 16.566ms
+2024-06-11 22:41:50.477 +07:00 [INF] Executed endpoint 'API_MPICTURE.Controllers.TagsController.GetTagById (API_MPICTURE)'
+2024-06-11 22:41:50.479 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5102/api/Tags/get-tag-by-id/2 - 200 null application/json; charset=utf-8 32.8987ms

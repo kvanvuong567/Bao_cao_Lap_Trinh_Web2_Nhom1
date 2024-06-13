@@ -1,0 +1,92 @@
+2024-06-13 01:22:02.074 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5102/api/Images/get-all-images?filterOn=name&filterQuery=&sortBy=dateAdded&isAscending=True - null null
+2024-06-13 01:22:02.090 +07:00 [INF] Executing endpoint 'API_MPICTURE.Controllers.ImagesController.GetAllImages (API_MPICTURE)'
+2024-06-13 01:22:02.091 +07:00 [INF] Route matched with {action = "GetAllImages", controller = "Images"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllImages(System.String, System.String, System.String, Boolean, Int32, Int32) on controller API_MPICTURE.Controllers.ImagesController (API_MPICTURE).
+2024-06-13 01:22:02.095 +07:00 [INF] GetAll Image Action method was invoked
+2024-06-13 01:22:02.096 +07:00 [WRN] This is a warning log
+2024-06-13 01:22:02.097 +07:00 [ERR] This is a error log
+2024-06-13 01:22:02.134 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[Description], [t].[URL], [t].[DateAdded], [t].[CategoryId], [c].[Name], [c].[Id], [t0].[Id], [t0].[Name], [t0].[Id0], [t0].[Id1]
+FROM (
+    SELECT [i].[Id], [i].[CategoryId], [i].[DateAdded], [i].[Description], [i].[Title], [i].[URL]
+    FROM [Images] AS [i]
+    ORDER BY [i].[DateAdded]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[Id]
+LEFT JOIN (
+    SELECT [i0].[TagId] AS [Id], [t1].[Name], [i0].[Id] AS [Id0], [t1].[Id] AS [Id1], [i0].[ImageId]
+    FROM [Image_Tags] AS [i0]
+    INNER JOIN [Tags] AS [t1] ON [i0].[TagId] = [t1].[Id]
+) AS [t0] ON [t].[Id] = [t0].[ImageId]
+ORDER BY [t].[DateAdded], [t].[Id], [c].[Id], [t0].[Id0]
+2024-06-13 01:22:02.142 +07:00 [INF] Finished GetAllImage request with data[{"Id":12,"Title":"S\u01B0 t\u1EED trong r\u1EEBng","Description":"H\u00ECnh \u1EA3nh c\u1EE7a m\u1ED9t con s\u01B0 t\u1EED trong m\u00F4i tr\u01B0\u1EDDng t\u1EF1 nhi\u00EAn.","Url":"https://i.pinimg.com/564x/b9/0a/e1/b90ae173190f3565a2d5edf7d6ae8b00.jpg","DateAdded":"2024-05-28T10:32:37.74","CategoryId":5,"CategoryName":"\u0110\u1ED9ng v\u1EADt hoang d\u00E3","Tags":[{"Id":2,"Name":"Thi\u00EAn Nhi\u00EAn"},{"Id":3,"Name":"\u0110\u1ED9ng v\u1EADt"}]},{"Id":13,"Title":"T\u00F2a nh\u00E0 ch\u1ECDc tr\u1EDDi","Description":"C\u1EA3nh quan th\u00E0nh ph\u1ED1 v\u1EDBi c\u00E1c t\u00F2a nh\u00E0 cao t\u1EA7ng.","Url":"https://i.pinimg.com/564x/7a/30/1b/7a301bb1e01e82d371b77c02323f89c7.jpg","DateAdded":"2024-05-28T10:32:37.74","CategoryId":6,"CategoryName":"Ki\u1EBFn tr\u00FAc","Tags":[{"Id":4,"Name":"Th\u00E0nh ph\u1ED1"}]},{"Id":14,"Title":"R\u1EEBng m\u00F9a thu","Description":"C\u1EA3nh r\u1EEBng v\u00E0o m\u00F9a thu v\u1EDBi l\u00E1 v\u00E0ng r\u1EF1c r\u1EE1.","Url":"https://i.pinimg.com/564x/73/bc/91/73bc919c9042a853ea77278734e0c3b5.jpg","DateAdded":"2024-05-28T10:32:37.74","CategoryId":4,"CategoryName":"Phong c\u1EA3nh","Tags":[{"Id":2,"Name":"Thi\u00EAn Nhi\u00EAn"}]},{"Id":9,"Title":"Ho\u00E0ng h\u00F4n tr\u00EAn bi\u1EC3n","Description":"M\u1ED9t c\u1EA3nh ho\u00E0ng h\u00F4n \u0111\u1EB9p m\u1EAFt tr\u00EAn bi\u1EC3n.","Url":"https://images.unsplash.com/photo-1501973801540-537f08ccae7b","DateAdded":"2024-05-28T10:39:59","CategoryId":4,"CategoryName":"Phong c\u1EA3nh","Tags":[{"Id":2,"Name":"Thi\u00EAn Nhi\u00EAn"}]},{"Id":1013,"Title":"K V\u0103n V\u01B0\u01A1ng","Description":"Chi\u1EBFn th\u1EA7n Boon h\u00E0ng - K\u1EBB h\u1EE7y di\u1EC7p shipper","Url":"https://th.bing.com/th/id/R.957ecf8189298622d1b2b33e8314461c?rik=QL6W0jHNYcfjIw\u0026pid=ImgRaw\u0026r=0","DateAdded":"2024-06-11T00:00:00","CategoryId":7,"CategoryName":"Ch\u00E2n dung","Tags":[{"Id":5,"Name":"Ch\u00E2n dung"}]}]
+2024-06-13 01:22:02.148 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API_MPICTURE.Models.DTO.ImageWithCategoryAndTagsDTO, API_MPICTURE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-06-13 01:22:02.150 +07:00 [INF] Executed action API_MPICTURE.Controllers.ImagesController.GetAllImages (API_MPICTURE) in 56.3373ms
+2024-06-13 01:22:02.153 +07:00 [INF] Executed endpoint 'API_MPICTURE.Controllers.ImagesController.GetAllImages (API_MPICTURE)'
+2024-06-13 01:22:02.156 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5102/api/Images/get-all-images?filterOn=name&filterQuery=&sortBy=dateAdded&isAscending=True - 200 null application/json; charset=utf-8 81.78ms
+2024-06-13 01:22:10.696 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5102/api/Images/get-all-images?filterOn=name&filterQuery=&sortBy=title&isAscending=True - null null
+2024-06-13 01:22:10.702 +07:00 [INF] Executing endpoint 'API_MPICTURE.Controllers.ImagesController.GetAllImages (API_MPICTURE)'
+2024-06-13 01:22:10.705 +07:00 [INF] Route matched with {action = "GetAllImages", controller = "Images"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllImages(System.String, System.String, System.String, Boolean, Int32, Int32) on controller API_MPICTURE.Controllers.ImagesController (API_MPICTURE).
+2024-06-13 01:22:10.713 +07:00 [INF] GetAll Image Action method was invoked
+2024-06-13 01:22:10.715 +07:00 [WRN] This is a warning log
+2024-06-13 01:22:10.717 +07:00 [ERR] This is a error log
+2024-06-13 01:22:10.733 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[Description], [t].[URL], [t].[DateAdded], [t].[CategoryId], [c].[Name], [c].[Id], [t0].[Id], [t0].[Name], [t0].[Id0], [t0].[Id1]
+FROM (
+    SELECT [i].[Id], [i].[CategoryId], [i].[DateAdded], [i].[Description], [i].[Title], [i].[URL]
+    FROM [Images] AS [i]
+    ORDER BY [i].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[Id]
+LEFT JOIN (
+    SELECT [i0].[TagId] AS [Id], [t1].[Name], [i0].[Id] AS [Id0], [t1].[Id] AS [Id1], [i0].[ImageId]
+    FROM [Image_Tags] AS [i0]
+    INNER JOIN [Tags] AS [t1] ON [i0].[TagId] = [t1].[Id]
+) AS [t0] ON [t].[Id] = [t0].[ImageId]
+ORDER BY [t].[Id], [c].[Id], [t0].[Id0]
+2024-06-13 01:22:10.742 +07:00 [INF] Finished GetAllImage request with data[{"Id":9,"Title":"Ho\u00E0ng h\u00F4n tr\u00EAn bi\u1EC3n","Description":"M\u1ED9t c\u1EA3nh ho\u00E0ng h\u00F4n \u0111\u1EB9p m\u1EAFt tr\u00EAn bi\u1EC3n.","Url":"https://images.unsplash.com/photo-1501973801540-537f08ccae7b","DateAdded":"2024-05-28T10:39:59","CategoryId":4,"CategoryName":"Phong c\u1EA3nh","Tags":[{"Id":2,"Name":"Thi\u00EAn Nhi\u00EAn"}]},{"Id":12,"Title":"S\u01B0 t\u1EED trong r\u1EEBng","Description":"H\u00ECnh \u1EA3nh c\u1EE7a m\u1ED9t con s\u01B0 t\u1EED trong m\u00F4i tr\u01B0\u1EDDng t\u1EF1 nhi\u00EAn.","Url":"https://i.pinimg.com/564x/b9/0a/e1/b90ae173190f3565a2d5edf7d6ae8b00.jpg","DateAdded":"2024-05-28T10:32:37.74","CategoryId":5,"CategoryName":"\u0110\u1ED9ng v\u1EADt hoang d\u00E3","Tags":[{"Id":2,"Name":"Thi\u00EAn Nhi\u00EAn"},{"Id":3,"Name":"\u0110\u1ED9ng v\u1EADt"}]},{"Id":13,"Title":"T\u00F2a nh\u00E0 ch\u1ECDc tr\u1EDDi","Description":"C\u1EA3nh quan th\u00E0nh ph\u1ED1 v\u1EDBi c\u00E1c t\u00F2a nh\u00E0 cao t\u1EA7ng.","Url":"https://i.pinimg.com/564x/7a/30/1b/7a301bb1e01e82d371b77c02323f89c7.jpg","DateAdded":"2024-05-28T10:32:37.74","CategoryId":6,"CategoryName":"Ki\u1EBFn tr\u00FAc","Tags":[{"Id":4,"Name":"Th\u00E0nh ph\u1ED1"}]},{"Id":14,"Title":"R\u1EEBng m\u00F9a thu","Description":"C\u1EA3nh r\u1EEBng v\u00E0o m\u00F9a thu v\u1EDBi l\u00E1 v\u00E0ng r\u1EF1c r\u1EE1.","Url":"https://i.pinimg.com/564x/73/bc/91/73bc919c9042a853ea77278734e0c3b5.jpg","DateAdded":"2024-05-28T10:32:37.74","CategoryId":4,"CategoryName":"Phong c\u1EA3nh","Tags":[{"Id":2,"Name":"Thi\u00EAn Nhi\u00EAn"}]},{"Id":1013,"Title":"K V\u0103n V\u01B0\u01A1ng","Description":"Chi\u1EBFn th\u1EA7n Boon h\u00E0ng - K\u1EBB h\u1EE7y di\u1EC7p shipper","Url":"https://th.bing.com/th/id/R.957ecf8189298622d1b2b33e8314461c?rik=QL6W0jHNYcfjIw\u0026pid=ImgRaw\u0026r=0","DateAdded":"2024-06-11T00:00:00","CategoryId":7,"CategoryName":"Ch\u00E2n dung","Tags":[{"Id":5,"Name":"Ch\u00E2n dung"}]}]
+2024-06-13 01:22:10.751 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API_MPICTURE.Models.DTO.ImageWithCategoryAndTagsDTO, API_MPICTURE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-06-13 01:22:10.753 +07:00 [INF] Executed action API_MPICTURE.Controllers.ImagesController.GetAllImages (API_MPICTURE) in 41.3992ms
+2024-06-13 01:22:10.757 +07:00 [INF] Executed endpoint 'API_MPICTURE.Controllers.ImagesController.GetAllImages (API_MPICTURE)'
+2024-06-13 01:22:10.759 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5102/api/Images/get-all-images?filterOn=name&filterQuery=&sortBy=title&isAscending=True - 200 null application/json; charset=utf-8 62.425ms
+2024-06-13 01:22:50.792 +07:00 [INF] User profile is available. Using 'C:\Users\kvanv\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-13 01:22:50.954 +07:00 [INF] Now listening on: http://localhost:5102
+2024-06-13 01:22:50.958 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-06-13 01:22:50.959 +07:00 [INF] Hosting environment: Development
+2024-06-13 01:22:50.960 +07:00 [INF] Content root path: D:\USB VUONG\Lập trình web2 (API)\Báo cáo\M_PICTURE\API_MPICTURE
+2024-06-13 01:22:51.529 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5102/swagger/index.html - null null
+2024-06-13 01:22:51.864 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5102/api/Images/get-all-images?filterOn=name&filterQuery=&sortBy=title&isAscending=True - null null
+2024-06-13 01:22:51.871 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5102/swagger/index.html - 200 null text/html;charset=utf-8 343.8197ms
+2024-06-13 01:22:51.890 +07:00 [WRN] Failed to determine the https port for redirect.
+2024-06-13 01:22:51.938 +07:00 [INF] Executing endpoint 'API_MPICTURE.Controllers.ImagesController.GetAllImages (API_MPICTURE)'
+2024-06-13 01:22:51.940 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5102/_vs/browserLink - null null
+2024-06-13 01:22:51.973 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5102/_framework/aspnetcore-browser-refresh.js - null null
+2024-06-13 01:22:51.979 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5102/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 5.9421ms
+2024-06-13 01:22:51.982 +07:00 [INF] Route matched with {action = "GetAllImages", controller = "Images"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllImages(System.String, System.String, System.String, Boolean, Int32, Int32) on controller API_MPICTURE.Controllers.ImagesController (API_MPICTURE).
+2024-06-13 01:22:52.001 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5102/_vs/browserLink - 200 null text/javascript; charset=UTF-8 61.1408ms
+2024-06-13 01:22:52.211 +07:00 [INF] GetAll Image Action method was invoked
+2024-06-13 01:22:52.212 +07:00 [WRN] This is a warning log
+2024-06-13 01:22:52.213 +07:00 [ERR] This is a error log
+2024-06-13 01:22:52.376 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5102/swagger/v1/swagger.json - null null
+2024-06-13 01:22:52.630 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5102/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 253.6313ms
+2024-06-13 01:22:53.812 +07:00 [INF] Executed DbCommand (27ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[Description], [t].[URL], [t].[DateAdded], [t].[CategoryId], [c].[Name], [c].[Id], [t0].[Id], [t0].[Name], [t0].[Id0], [t0].[Id1]
+FROM (
+    SELECT [i].[Id], [i].[CategoryId], [i].[DateAdded], [i].[Description], [i].[Title], [i].[URL]
+    FROM [Images] AS [i]
+    ORDER BY [i].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[Id]
+LEFT JOIN (
+    SELECT [i0].[TagId] AS [Id], [t1].[Name], [i0].[Id] AS [Id0], [t1].[Id] AS [Id1], [i0].[ImageId]
+    FROM [Image_Tags] AS [i0]
+    INNER JOIN [Tags] AS [t1] ON [i0].[TagId] = [t1].[Id]
+) AS [t0] ON [t].[Id] = [t0].[ImageId]
+ORDER BY [t].[Id], [c].[Id], [t0].[Id0]
+2024-06-13 01:22:53.856 +07:00 [INF] Finished GetAllImage request with data[{"Id":9,"Title":"Ho\u00E0ng h\u00F4n tr\u00EAn bi\u1EC3n","Description":"M\u1ED9t c\u1EA3nh ho\u00E0ng h\u00F4n \u0111\u1EB9p m\u1EAFt tr\u00EAn bi\u1EC3n.","Url":"https://images.unsplash.com/photo-1501973801540-537f08ccae7b","DateAdded":"2024-05-28T10:39:59","CategoryId":4,"CategoryName":"Phong c\u1EA3nh","Tags":[{"Id":2,"Name":"Thi\u00EAn Nhi\u00EAn"}]},{"Id":12,"Title":"S\u01B0 t\u1EED trong r\u1EEBng","Description":"H\u00ECnh \u1EA3nh c\u1EE7a m\u1ED9t con s\u01B0 t\u1EED trong m\u00F4i tr\u01B0\u1EDDng t\u1EF1 nhi\u00EAn.","Url":"https://i.pinimg.com/564x/b9/0a/e1/b90ae173190f3565a2d5edf7d6ae8b00.jpg","DateAdded":"2024-05-28T10:32:37.74","CategoryId":5,"CategoryName":"\u0110\u1ED9ng v\u1EADt hoang d\u00E3","Tags":[{"Id":2,"Name":"Thi\u00EAn Nhi\u00EAn"},{"Id":3,"Name":"\u0110\u1ED9ng v\u1EADt"}]},{"Id":13,"Title":"T\u00F2a nh\u00E0 ch\u1ECDc tr\u1EDDi","Description":"C\u1EA3nh quan th\u00E0nh ph\u1ED1 v\u1EDBi c\u00E1c t\u00F2a nh\u00E0 cao t\u1EA7ng.","Url":"https://i.pinimg.com/564x/7a/30/1b/7a301bb1e01e82d371b77c02323f89c7.jpg","DateAdded":"2024-05-28T10:32:37.74","CategoryId":6,"CategoryName":"Ki\u1EBFn tr\u00FAc","Tags":[{"Id":4,"Name":"Th\u00E0nh ph\u1ED1"}]},{"Id":14,"Title":"R\u1EEBng m\u00F9a thu","Description":"C\u1EA3nh r\u1EEBng v\u00E0o m\u00F9a thu v\u1EDBi l\u00E1 v\u00E0ng r\u1EF1c r\u1EE1.","Url":"https://i.pinimg.com/564x/73/bc/91/73bc919c9042a853ea77278734e0c3b5.jpg","DateAdded":"2024-05-28T10:32:37.74","CategoryId":4,"CategoryName":"Phong c\u1EA3nh","Tags":[{"Id":2,"Name":"Thi\u00EAn Nhi\u00EAn"}]},{"Id":1013,"Title":"K V\u0103n V\u01B0\u01A1ng","Description":"Chi\u1EBFn th\u1EA7n Boon h\u00E0ng - K\u1EBB h\u1EE7y di\u1EC7p shipper","Url":"https://th.bing.com/th/id/R.957ecf8189298622d1b2b33e8314461c?rik=QL6W0jHNYcfjIw\u0026pid=ImgRaw\u0026r=0","DateAdded":"2024-06-11T00:00:00","CategoryId":7,"CategoryName":"Ch\u00E2n dung","Tags":[{"Id":5,"Name":"Ch\u00E2n dung"}]}]
+2024-06-13 01:22:53.869 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API_MPICTURE.Models.DTO.ImageWithCategoryAndTagsDTO, API_MPICTURE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-06-13 01:22:53.880 +07:00 [INF] Executed action API_MPICTURE.Controllers.ImagesController.GetAllImages (API_MPICTURE) in 1889.3139ms
+2024-06-13 01:22:53.882 +07:00 [INF] Executed endpoint 'API_MPICTURE.Controllers.ImagesController.GetAllImages (API_MPICTURE)'
+2024-06-13 01:22:53.895 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5102/api/Images/get-all-images?filterOn=name&filterQuery=&sortBy=title&isAscending=True - 200 null application/json; charset=utf-8 2031.0026ms

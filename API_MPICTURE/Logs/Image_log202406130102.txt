@@ -1,0 +1,29 @@
+2024-06-13 01:02:11.028 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5102/api/Images/get-all-images?filterOn=name&filterQuery=S%C6%B0%20t%E1%BB%AD&pageNumber=1&pageSize=1 - null null
+2024-06-13 01:02:11.037 +07:00 [INF] Executing endpoint 'API_MPICTURE.Controllers.ImagesController.GetAllImages (API_MPICTURE)'
+2024-06-13 01:02:11.040 +07:00 [INF] Route matched with {action = "GetAllImages", controller = "Images"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllImages(System.String, System.String, System.String, Boolean, Int32, Int32) on controller API_MPICTURE.Controllers.ImagesController (API_MPICTURE).
+2024-06-13 01:02:11.044 +07:00 [INF] GetAll Image Action method was invoked
+2024-06-13 01:02:11.046 +07:00 [WRN] This is a warning log
+2024-06-13 01:02:11.047 +07:00 [ERR] This is a error log
+2024-06-13 01:02:11.060 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-06-13 01:02:11.062 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-06-13 01:02:11.104 +07:00 [INF] Executed DbCommand (20ms) [Parameters=[@__filterQuery_0_contains='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[Description], [t].[URL], [t].[DateAdded], [t].[CategoryId], [c].[Name], [c].[Id], [t0].[Id], [t0].[Name], [t0].[Id0], [t0].[Id1]
+FROM (
+    SELECT [i].[Id], [i].[CategoryId], [i].[DateAdded], [i].[Description], [i].[Title], [i].[URL]
+    FROM [Images] AS [i]
+    WHERE [i].[Title] LIKE @__filterQuery_0_contains ESCAPE N'\'
+    ORDER BY (SELECT 1)
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[Id]
+LEFT JOIN (
+    SELECT [i0].[TagId] AS [Id], [t1].[Name], [i0].[Id] AS [Id0], [t1].[Id] AS [Id1], [i0].[ImageId]
+    FROM [Image_Tags] AS [i0]
+    INNER JOIN [Tags] AS [t1] ON [i0].[TagId] = [t1].[Id]
+) AS [t0] ON [t].[Id] = [t0].[ImageId]
+ORDER BY [t].[Id], [c].[Id], [t0].[Id0]
+2024-06-13 01:02:11.111 +07:00 [INF] Finished GetAllImage request with data[{"Id":12,"Title":"S\u01B0 t\u1EED trong r\u1EEBng","Description":"H\u00ECnh \u1EA3nh c\u1EE7a m\u1ED9t con s\u01B0 t\u1EED trong m\u00F4i tr\u01B0\u1EDDng t\u1EF1 nhi\u00EAn.","Url":"https://i.pinimg.com/564x/b9/0a/e1/b90ae173190f3565a2d5edf7d6ae8b00.jpg","DateAdded":"2024-05-28T10:32:37.74","CategoryId":5,"CategoryName":"\u0110\u1ED9ng v\u1EADt hoang d\u00E3","Tags":[{"Id":2,"Name":"Thi\u00EAn Nhi\u00EAn"},{"Id":3,"Name":"\u0110\u1ED9ng v\u1EADt"}]}]
+2024-06-13 01:02:11.114 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API_MPICTURE.Models.DTO.ImageWithCategoryAndTagsDTO, API_MPICTURE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-06-13 01:02:11.116 +07:00 [INF] Executed action API_MPICTURE.Controllers.ImagesController.GetAllImages (API_MPICTURE) in 72.4531ms
+2024-06-13 01:02:11.118 +07:00 [INF] Executed endpoint 'API_MPICTURE.Controllers.ImagesController.GetAllImages (API_MPICTURE)'
+2024-06-13 01:02:11.121 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5102/api/Images/get-all-images?filterOn=name&filterQuery=S%C6%B0%20t%E1%BB%AD&pageNumber=1&pageSize=1 - 200 null application/json; charset=utf-8 91.7083ms

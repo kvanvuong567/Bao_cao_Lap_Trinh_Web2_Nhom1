@@ -1,0 +1,95 @@
+﻿@model IEnumerable<MVC_MPICTURE.Models.DTO.ImageDTO>
+<style>
+    body {
+        background-image: url('https://th.bing.com/th/id/R.444ee05f7214d0733408ed264aa162c0?rik=y5VdqX%2boTOhlbg&riu=http%3a%2f%2fwww.pixelstalk.net%2fwp-content%2fuploads%2f2016%2f04%2flandscape-wallpaper-hd-backgrounds.jpg&ehk=NstFyx3yEGqPuC1FsArlbLzq%2bbCyPnobk4HDI9yiGR4%3d&risl=&pid=ImgRaw&r=0');
+        background-size: cover;
+    }
+
+    .btn {
+        margin-right: 10px;
+    }
+
+    .card {
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        border-radius: 10px;
+    }
+
+    .card-footer {
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+
+    .dropdown-menu {
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 5px;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+
+    .form-control,
+    .form-select {
+        background-color: rgba(255, 255, 255, 0.8); 
+        color: #000; 
+    }
+
+    .card-title,
+    .card-text,
+    .text-muted {
+        color: #000; 
+    }
+</style>
+
+    <a class="btn btn-primary" asp-controller="Images" asp-action="Create">Thêm ảnh mới</a>
+    <a class="btn btn-primary" asp-controller="Categories" asp-action="Index">Chủ đề</a>
+    <a class="btn btn-primary" asp-controller="Tags" asp-action="Index">Thẻ</a>
+<form asp-controller="Images" asp-action="Index" method="GET" class="mb-4 row g-3">
+    <div class="col-auto">
+        <label class="form-label" style="color:white"><b>Tìm kiếm ảnh: </b></label>
+        <select name="filterOn" class="form-select">
+            <option value="name">Tiêu đề</option>
+            <option value="description">Mô tả</option>
+        </select>
+    </div>
+    <div class="col-auto">
+        <label class="form-label" style="color:white"><b>Từ khóa: </b></label>
+        <input type="text" name="filterQuery" class="form-control" value="@ViewBag.FilterQuery" />
+    </div>
+    <div class="col-auto">
+        <label class="form-label" style="color:white"><b>Sắp xếp:</b></label>
+        <select name="sortBy" class="form-select">
+            <option value="name">Tiêu đề</option>
+            <option value="dateAdded">Ngày thêm</option>
+        </select>
+    </div>
+    <div class="col-auto align-self-end">
+        <input type="submit" value="Tìm kiếm" class="btn btn-secondary" />
+    </div>
+</form>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card h-100">
+                <img src="@item.Url" class="card-img-top" style="object-fit: cover; height: 200px;" alt="@item.Title">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <p class="card-text">@item.Description</p>
+                </div>
+                <div class="card-footer text-muted">
+                    <small class="text-muted">Ngày thêm: @item.DateAdded.ToString("dd/MM/yyyy")</small>
+                    <div class="dropdown float-end">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            ...
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" asp-controller="Images" asp-action="Details" asp-route-id="@item.Id">Xem chi tiết</a></li>
+                            <li><a class="dropdown-item" asp-controller="Images" asp-action="Edit" asp-route-id="@item.Id">Sửa</a></li>
+                            <li><a class="dropdown-item" asp-controller="Images" asp-action="Delete" asp-route-id="@item.Id">Xóa</a></li>
+                            <li><a class="dropdown-item" asp-controller="Images" asp-action="DownloadImage" asp-route-id="@item.Id" asp-route-imageUrl="@item.Url">Tải ảnh</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

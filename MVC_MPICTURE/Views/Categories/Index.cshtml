@@ -1,0 +1,59 @@
+﻿@model List<MVC_MPICTURE.Models.DTO.categoryDTO>
+
+<div class="container mt-5">
+    <h2 class="text-center">Danh sách Thể loại</h2>
+
+    <p class="text-center">
+        <a asp-action="Create" class="btn btn-primary">Tạo mới</a>
+    </p>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="text-center">Tên</th>
+                    <th class="text-center">Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td class="text-center">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Chỉnh sửa</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">Chi tiết</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    body {
+        background-image: url('https://th.bing.com/th/id/R.444ee05f7214d0733408ed264aa162c0?rik=y5VdqX%2boTOhlbg&riu=http%3a%2f%2fwww.pixelstalk.net%2fwp-content%2fuploads%2f2016%2f04%2flandscape-wallpaper-hd-backgrounds.jpg&ehk=NstFyx3yEGqPuC1FsArlbLzq%2bbCyPnobk4HDI9yiGR4%3d&risl=&pid=ImgRaw&r=0');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+
+    }
+
+    .container {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .btn {
+        margin: 5px;
+    }
+</style>

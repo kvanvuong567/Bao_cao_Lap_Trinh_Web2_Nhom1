@@ -1,0 +1,6 @@
+@API_MPICTURE_HostAddress = http://localhost:5102
+
+GET {{API_MPICTURE_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

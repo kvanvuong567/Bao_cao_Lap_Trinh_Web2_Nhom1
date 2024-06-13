@@ -1,0 +1,26 @@
+2024-06-13 01:01:51.665 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5102/api/Images/get-all-images?filterOn=s%C6%B0%20t%E1%BB%AD%20&pageNumber=1&pageSize=1 - null null
+2024-06-13 01:01:51.703 +07:00 [INF] Executing endpoint 'API_MPICTURE.Controllers.ImagesController.GetAllImages (API_MPICTURE)'
+2024-06-13 01:01:51.705 +07:00 [INF] Route matched with {action = "GetAllImages", controller = "Images"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllImages(System.String, System.String, System.String, Boolean, Int32, Int32) on controller API_MPICTURE.Controllers.ImagesController (API_MPICTURE).
+2024-06-13 01:01:51.709 +07:00 [INF] GetAll Image Action method was invoked
+2024-06-13 01:01:51.711 +07:00 [WRN] This is a warning log
+2024-06-13 01:01:51.712 +07:00 [ERR] This is a error log
+2024-06-13 01:01:51.761 +07:00 [INF] Executed DbCommand (40ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[Description], [t].[URL], [t].[DateAdded], [t].[CategoryId], [c].[Name], [c].[Id], [t0].[Id], [t0].[Name], [t0].[Id0], [t0].[Id1]
+FROM (
+    SELECT [i].[Id], [i].[CategoryId], [i].[DateAdded], [i].[Description], [i].[Title], [i].[URL]
+    FROM [Images] AS [i]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[Id]
+LEFT JOIN (
+    SELECT [i0].[TagId] AS [Id], [t1].[Name], [i0].[Id] AS [Id0], [t1].[Id] AS [Id1], [i0].[ImageId]
+    FROM [Image_Tags] AS [i0]
+    INNER JOIN [Tags] AS [t1] ON [i0].[TagId] = [t1].[Id]
+) AS [t0] ON [t].[Id] = [t0].[ImageId]
+ORDER BY [t].[Id], [c].[Id], [t0].[Id0]
+2024-06-13 01:01:51.771 +07:00 [INF] Finished GetAllImage request with data[{"Id":9,"Title":"Ho\u00E0ng h\u00F4n tr\u00EAn bi\u1EC3n","Description":"M\u1ED9t c\u1EA3nh ho\u00E0ng h\u00F4n \u0111\u1EB9p m\u1EAFt tr\u00EAn bi\u1EC3n.","Url":"https://images.unsplash.com/photo-1501973801540-537f08ccae7b","DateAdded":"2024-05-28T10:39:59","CategoryId":4,"CategoryName":"Phong c\u1EA3nh","Tags":[{"Id":2,"Name":"Thi\u00EAn Nhi\u00EAn"}]}]
+2024-06-13 01:01:51.774 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API_MPICTURE.Models.DTO.ImageWithCategoryAndTagsDTO, API_MPICTURE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-06-13 01:01:51.780 +07:00 [INF] Executed action API_MPICTURE.Controllers.ImagesController.GetAllImages (API_MPICTURE) in 72.1366ms
+2024-06-13 01:01:51.784 +07:00 [INF] Executed endpoint 'API_MPICTURE.Controllers.ImagesController.GetAllImages (API_MPICTURE)'
+2024-06-13 01:01:51.785 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5102/api/Images/get-all-images?filterOn=s%C6%B0%20t%E1%BB%AD%20&pageNumber=1&pageSize=1 - 200 null application/json; charset=utf-8 120.2986ms

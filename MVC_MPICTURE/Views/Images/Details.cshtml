@@ -1,0 +1,74 @@
+﻿@model MVC_MPICTURE.Models.DTO.ImageDTO
+
+<style>
+    body {
+        background-image: url('https://th.bing.com/th/id/R.444ee05f7214d0733408ed264aa162c0?rik=y5VdqX%2boTOhlbg&riu=http%3a%2f%2fwww.pixelstalk.net%2fwp-content%2fuploads%2f2016%2f04%2flandscape-wallpaper-hd-backgrounds.jpg&ehk=NstFyx3yEGqPuC1FsArlbLzq%2bbCyPnobk4HDI9yiGR4%3d&risl=&pid=ImgRaw&r=0');
+    }
+
+    h2 {
+        color: #fff;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        border-radius: 10px;
+    }
+
+    .card-title {
+        color: #333;
+    }
+
+    dt {
+        font-weight: bold;
+    }
+
+    dd {
+        margin-left: 0;
+    }
+
+    .btn-primary {
+        margin-top: 20px;
+    }
+</style>
+
+<h2>Chi tiết ảnh</h2>
+
+<div class="container">
+    <div class="card">
+        <img src="@Model.Url" class="card-img-top" alt="Ảnh">
+        <div class="card-body">
+            <h4 class="card-title">Thông tin chi tiết</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3">Tiêu đề:</dt>
+                <dd class="col-sm-9">@Model.Title</dd>
+                <dt class="col-sm-3">Mô tả:</dt>
+                <dd class="col-sm-9">@Model.Description</dd>
+                <dt class="col-sm-3">Đường dẫn:</dt>
+                <dd class="col-sm-9"><a href="@Model.Url" target="_blank">@Model.Url</a></dd>
+                <dt class="col-sm-3">Ngày thêm:</dt>
+                <dd class="col-sm-9">@Model.DateAdded.ToString("dd/MM/yyyy")</dd>
+                <dt class="col-sm-3">Danh mục:</dt>
+                <dd class="col-sm-9">@Model.CategoryName</dd>
+                <dt class="col-sm-3">Thẻ:</dt>
+                <dd class="col-sm-9">
+                    @foreach (var tag in Model.Tags)
+                    {
+                        <span>@tag.Name </span>
+                    }
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <a asp-action="Index" class="btn btn-primary">Quay lại</a>
+</div>
