@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MVC_MPICTURE")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1ff443e1d37d9be468b99f584df3772e047df640")]
 [assembly: System.Reflection.AssemblyProductAttribute("MVC_MPICTURE")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MVC_MPICTURE")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -95,3 +95,4 @@ D:\USB VUONG\Lập trình web2 (API)\Báo cáo\M_PICTURE\MVC_MPICTURE\bin\Debug\
 D:\USB VUONG\Lập trình web2 (API)\Báo cáo\M_PICTURE\MVC_MPICTURE\obj\Debug\net8.0\MVC_MPICTURE.csproj.AssemblyReference.cache
 D:\USB VUONG\Lập trình web2 (API)\Báo cáo\M_PICTURE\MVC_MPICTURE\obj\Debug\net8.0\MVC_MPICTURE.MvcApplicationPartsAssemblyInfo.cs
 D:\USB VUONG\Lập trình web2 (API)\Báo cáo\M_PICTURE\MVC_MPICTURE\obj\Debug\net8.0\MVC_MPICTURE.csproj.CopyComplete
+D:\USB VUONG\Lập trình web2 (API)\Báo cáo\M_PICTURE\MVC_MPICTURE\obj\Debug\net8.0\MVC_MPICTURE.sourcelink.json

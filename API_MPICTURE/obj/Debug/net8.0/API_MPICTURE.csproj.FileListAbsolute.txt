@@ -150,3 +150,4 @@ D:\USB VUONG\Lập trình web2 (API)\Báo cáo\M_PICTURE\API_MPICTURE\bin\Debug\
 D:\USB VUONG\Lập trình web2 (API)\Báo cáo\M_PICTURE\API_MPICTURE\bin\Debug\net8.0\Serilog.Sinks.Console.dll
 D:\USB VUONG\Lập trình web2 (API)\Báo cáo\M_PICTURE\API_MPICTURE\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
 D:\USB VUONG\Lập trình web2 (API)\Báo cáo\M_PICTURE\API_MPICTURE\bin\Debug\net8.0\Serilog.Sinks.File.dll
+D:\USB VUONG\Lập trình web2 (API)\Báo cáo\M_PICTURE\API_MPICTURE\obj\Debug\net8.0\API_MPICTURE.sourcelink.json
